@@ -4,7 +4,6 @@ import {
   View,
   Text,
   Image,
-  Button,
   TextInput,
   TouchableOpacity,
 } from "react-native";
@@ -14,6 +13,11 @@ import * as blazeface from "@tensorflow-models/blazeface";
 import RNPickerSelect from "react-native-picker-select";
 import { Button } from "react-native-paper";
 import { Camera } from "expo-camera";
+import * as mobilenet from "@tensorflow-models/mobilenet";
+import { cameraWithTensors } from "@tensorflow/tfjs-react-native";
+import { LogBox } from "react-native";
+//disable yellow warnings on EXPO client!
+LogBox.ignoreAllLogs = true;
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);

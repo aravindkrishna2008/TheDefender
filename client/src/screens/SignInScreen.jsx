@@ -46,6 +46,7 @@ const SignInScreen = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
           />
+        <Button mode='text' onPress={() => navigation.navigate("signup")}>Need an account? Sign up instead</Button>
           <Button style={{marginTop: 10, backgroundColor: "#30bfbf", width: 200, alignSelf: "center"}} mode={"contained"}>
               Sign in
           </Button>

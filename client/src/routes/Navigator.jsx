@@ -7,9 +7,12 @@ import { navigatorRef } from '../navigationRef'
 
 const Stack = createNativeStackNavigator()
 
-export default function Navigator() {
-    return(
-        <SignInScreen />
-    )
-}
-
+export function MyStack() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Home" component={SignInScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+  }

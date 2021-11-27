@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, Image, Keyboard, TouchableWithoutFeedback} from 
 import { TextInput, Title, Button } from 'react-native-paper';
 import {Ionicons} from '@expo/vector-icons'
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation: { navigate } }) => {
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
@@ -46,7 +46,7 @@ const SignInScreen = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
           />
-        <Button mode='text' onPress={() => navigation.navigate("signup")}>Need an account? Sign up instead</Button>
+        <Button mode='text' onPress={() => navigate("Sign Up")}>Need an account? Sign up instead</Button>
           <Button style={{marginTop: 10, backgroundColor: "#30bfbf", width: 200, alignSelf: "center"}} mode={"contained"}>
               Sign in
           </Button>

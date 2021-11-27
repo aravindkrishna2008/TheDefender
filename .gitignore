@@ -1,2 +1,4 @@
 client/node_modules
 backend/node_modules
+models/ML_Models/mask_detector.h5
+client/assets/machine_learing

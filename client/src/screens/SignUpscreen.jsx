@@ -43,42 +43,12 @@ const SignupScreen = ({navigation}) => {
         <Title style={{alignSelf: 'center', fontSize: 25}}>Sign up for Fitlance</Title>
         <Ionicons name="fitness" size={75} color="red" style={{alignSelf: 'center'}}/>
         {/* <Text style={styles.textStyle}>Enter First Name: </Text> */}
-        <TextInput 
-          style={{margin: 10}} 
-          value={firstName} 
-          onChangeText={setFirstName}
-          left={<TextInput.Icon name={() => <Ionicons name="person-outline" size={25} />} />}
-            label={'First Name'}
-            mode='outlined'
-          theme={{
-            roundness: 20,
-            colors: {
-              primary:'#30bfbf',
-              underlineColor:'transparent',
-            }
-          }}
-        />
         {/* <Text style={styles.textStyle}>Enter Last Name:</Text> */}
-          <TextInput 
-            style={{margin: 10}} 
-            value={lastName} 
-            onChangeText={setLastName}
-            left={<TextInput.Icon name={() => <Ionicons name="person-outline" size={25} />} />}
-            label={'Last Name'}
-            mode='outlined'
-            theme={{
-              roundness: 20,
-              colors: {
-                primary:'#30bfbf',
-                underlineColor:'transparent',
-              }
-            }}
-          />
           {/* <Text style={styles.textStyle}>Enter Email: </Text> */}
           <TextInput 
             style={{ margin: 10}} 
-            value={email} 
-            onChangeText={setEmail}  
+            // value={email} 
+            // onChangeText={setEmail}  
             keyboardType="email-address"
             left={<TextInput.Icon name={() => <Ionicons name="mail-outline" size={25} />} />}
             label={'Email'}
@@ -96,8 +66,8 @@ const SignupScreen = ({navigation}) => {
           {/* <Text style={styles.textStyle}>Enter Password: </Text> */}
           <TextInput 
             style={{ margin: 10}} 
-            secureTextEntry value={password} 
-            onChangeText={setPassword} 
+            // secureTextEntry value={password} 
+            // onChangeText={setPassword} 
             left={<TextInput.Icon name={() => <Ionicons name="key-outline" size={25} />} />}
             label={'Password'}
             mode='outlined'
@@ -114,7 +84,7 @@ const SignupScreen = ({navigation}) => {
           {state.errorMessage ? (
             <Text style={styles.errorMessage}>{state.errorMessage}</Text>
           ) : null}
-        <Button dark={true} disabled={disabled} mode="contained" color={"#30bfbf"} onPress={() => signup({ firstName, lastName, email, password})}>Create</Button>
+        {/* <Button dark={true} disabled={disabled} mode="contained" color={"#30bfbf"} onPress={() => signup({ firstName, lastName, email, password})}>Create</Button> */}
         <Button mode='text' onPress={() => navigation.navigate("Signin")}>Have an account? Sign in instead</Button>
       </ScrollView>
     </View>

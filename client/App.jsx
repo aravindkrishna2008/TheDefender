@@ -15,7 +15,7 @@ function App() {
     <AuthProvider>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Sign In"
             component={SignInScreen}
             options={{ headerShown: false }}
@@ -24,7 +24,7 @@ function App() {
             name="Sign Up"
             component={SignUpScreen}
             options={{ headerShown: false }}
-          />
+          /> */}
           <Stack.Screen
             name="Camera"
             component={CameraScreen}

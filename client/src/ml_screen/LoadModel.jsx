@@ -10,7 +10,7 @@ import {
   Image,
 } from "react-native";
 import { Camera } from "expo-camera";
-let camera: Camera;
+let camera;
 import { Ionicons } from "@expo/vector-icons";
 var axios = require("axios");
 
@@ -34,7 +34,7 @@ export default function App({ navigation: { navigate } }) {
     }
   };
   const __takePicture = async () => {
-    const photo: any = await camera.takePictureAsync();
+    const photo = await camera.takePictureAsync();
     console.log(photo);
     console.log(photo.uri);
     uploadPhoto(photo);
@@ -42,7 +42,7 @@ export default function App({ navigation: { navigate } }) {
     //setStartCamera(false)
     setCapturedImage(photo);
   };
-  const uploadPhoto = async (photo: any) => {
+  const uploadPhoto = async (photo) => {
     let formData = new FormData();
     //@ts-ignore
     let string = photo.uri;
@@ -68,7 +68,7 @@ export default function App({ navigation: { navigate } }) {
       type: "image/jpeg",
     });
     const response = await axios.post(
-      `http://192.168.86.207:5002/upload-image`,
+      `http://192.168.86.209:5002/upload-image`,
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const CameraPreview = ({ photo, retakePicture, savePhoto }: any) => {
+const CameraPreview = ({ photo, retakePicture, savePhoto }) => {
   return (
     <View
       style={{

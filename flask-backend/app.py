@@ -62,7 +62,6 @@ def upload_image():
 
             # The name of the image file to annotate
             file_name = os.path.abspath(im.filename)
-            print(file_name)
             # Loads the image into memory
             with open(file_name, 'rb') as image_file:
                 content = image_file.read()
@@ -72,10 +71,12 @@ def upload_image():
             path = os.path.join(app.config["IMAGE_UPLOADS"], im.filename)
             print(path)
             img = tf.keras.preprocessing.image.load_img(path, target_size=(200, 200))
+            print(img)
             img_array = tf.keras.preprocessing.image.img_to_array(img)
-            img_array = tf.expand_dims(img_array, 0) # Create a batch
+            # img_array = tf.expand_dims(img_array, 0) # Create a batch
+            image_array = np.array([img_array])
 
-            predictions = new_model.predict(img_array)
+            predictions = new_model.predict(image_array)
             score = tf.nn.softmax(predictions[0])
             print(score)
             

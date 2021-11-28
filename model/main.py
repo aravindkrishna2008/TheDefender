@@ -1,4 +1,4 @@
-from tensorflow.keras.layers import Input, Lambda, Dense, Flatten,Dropout
+from tensorflow.keras.layers import Input, Lambda, Dense, Flatten, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.applications.vgg19 import VGG19
 from tensorflow.keras.applications.vgg19 import preprocess_input
@@ -87,3 +87,5 @@ import tensorflow as tf
 #     print(model.evaluate(validation_generator).size())
 
 
+new_model = tf.keras.models.load_model("ML_Models/mask_detector.h5")
+print(new_model.summary())

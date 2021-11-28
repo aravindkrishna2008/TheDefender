@@ -61,8 +61,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   camera: {
-    height: 320,
-    width: 180,
+    height: "100%",
+    width: "100%",
     marginBottom: 300,
   },
 });

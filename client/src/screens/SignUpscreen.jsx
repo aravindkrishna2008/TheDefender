@@ -58,7 +58,7 @@ const SignInScreen = ({ navigation: { navigate } }) => {
                 autoCorrect={false}
           />
         <Button mode='text' onPress={() => navigate("Sign In")}>Have an account? Sign in instead</Button>
-          <Button style={{marginTop: 10, backgroundColor: "#30bfbf", width: 200, alignSelf: "center"}} mode={"contained"}>
+          <Button style={{marginTop: 10, backgroundColor: "#30bfbf", width: 200, alignSelf: "center"}} mode={"contained"} onPress={() => signup({email: email, password: password})}>
               Sign up
           </Button>
         </View>

@@ -5,13 +5,14 @@ import SignInScreen from "./src/screens/SignInScreen";
 import SignUpScreen from "./src/screens/SignUpscreen";
 import CameraScreen from "./src/ml_screen/LoadModel";
 import {Provider as AuthProvider} from "./src/context/AuthContext.jsx"
+import { navigationRef } from './src/RootNavigation';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <AuthProvider>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
           <Stack.Screen
             name="Sign In"

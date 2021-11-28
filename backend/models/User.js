@@ -11,6 +11,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  firstName: {
+    type: String,
+    // required: true,
+  },
+  lastName: {
+    type: String,
+    // required: true
+  }
 })
 
 
@@ -53,4 +61,4 @@ userSchema.methods.comparePassword = function(candidatePassword) {
   })
 };
  
-mongoose.model('Users2', userSchema)
+mongoose.model('Users', userSchema)

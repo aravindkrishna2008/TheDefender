@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignInScreen from "./src/screens/SignInScreen";
 import SignUpScreen from "./src/screens/SignUpscreen";
 import CameraScreen from "./src/ml_screen/LoadModel";
-import {Provider as AuthProvider} from "./src/context/AuthContext.jsx"
-import { navigationRef } from './src/RootNavigation';
+import { Provider as AuthProvider } from "./src/context/AuthContext.jsx";
+import { navigationRef } from "./src/RootNavigation";
 
 const Stack = createNativeStackNavigator();
 

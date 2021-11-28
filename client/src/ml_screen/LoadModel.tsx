@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -21,8 +21,6 @@ export default function App() {
     Camera.Constants.Type.back
   );
   const [flashMode, setFlashMode] = React.useState("off");
-  const [startNewLoop, setStartNewLoop] = useState(false);
-  const [startInfinitePhotos, setStartInfinitePhotos] = useState(false);
 
   const __startCamera = async () => {
     const { status } = await Camera.requestPermissionsAsync();
@@ -33,17 +31,13 @@ export default function App() {
       Alert.alert("Access denied");
     }
   };
-  useEffect(() => {
-    const __takePicture = async () => {
-      const photo: any = await camera.takePictureAsync();
-      console.log(photo);
-      //setStartCamera(false)
-      setCapturedImage(photo);
-    };
-    while (true) {
-      __takePicture();
-    }
-  }, [startInfinitePhotos]);
+  const __takePicture = async () => {
+    const photo: any = await camera.takePictureAsync();
+    console.log(photo);
+    setPreviewVisible(true);
+    //setStartCamera(false)
+    setCapturedImage(photo);
+  };
   const __savePhoto = () => {};
   const __retakePicture = () => {
     setCapturedImage(null);
@@ -169,7 +163,7 @@ export default function App() {
                         marginTop: 700,
                       }}
                       onPress={async () => {
-                        await setStartInfinitePhotos(true);
+                        await __takePicture();
                       }}
                     />
                   </View>

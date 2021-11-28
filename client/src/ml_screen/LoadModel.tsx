@@ -22,6 +22,7 @@ export default function App() {
   );
   const [flashMode, setFlashMode] = React.useState("off");
   const [startNewLoop, setStartNewLoop] = useState(false);
+  const [startInfinitePhotos, setStartInfinitePhotos] = useState(false);
 
   const __startCamera = async () => {
     const { status } = await Camera.requestPermissionsAsync();
@@ -32,17 +33,17 @@ export default function App() {
       Alert.alert("Access denied");
     }
   };
-  // useEffect(() => {
-  //   const __takePicture = async () => {
-  //     const photo: any = await camera.takePictureAsync();
-  //     console.log(photo);
-  //     //setStartCamera(false)
-  //     setCapturedImage(photo);
-  //   };
-  //   while (true) {
-  //     __takePicture();
-  //   }
-  // }, [startCamera]);
+  useEffect(() => {
+    const __takePicture = async () => {
+      const photo: any = await camera.takePictureAsync();
+      console.log(photo);
+      //setStartCamera(false)
+      setCapturedImage(photo);
+    };
+    while (true) {
+      __takePicture();
+    }
+  }, [startInfinitePhotos]);
   const __savePhoto = () => {};
   const __retakePicture = () => {
     setCapturedImage(null);
@@ -159,7 +160,7 @@ export default function App() {
                       alignItems: "center",
                     }}
                   >
-                    {/* <Ionicons
+                    <Ionicons
                       name="ellipse-outline"
                       color="white"
                       size={75}
@@ -168,9 +169,9 @@ export default function App() {
                         marginTop: 700,
                       }}
                       onPress={async () => {
-                        await __takePicture();
+                        await setStartInfinitePhotos(true);
                       }}
-                    /> */}
+                    />
                   </View>
                 </View>
               </View>

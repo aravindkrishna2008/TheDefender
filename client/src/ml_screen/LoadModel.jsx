@@ -20,8 +20,17 @@ import { LogBox } from "react-native";
 LogBox.ignoreAllLogs = true;
 
 export default function App() {
+  const [mask, setMask] = useState(null);
+  const [predictionFound, setPredictionFound] = useState(false);
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [mobilenetModel, setMobilenetModel] = useState(null);
+  const [frameworkReady, setFrameworkReady] = useState(false);
+
+  const TensorCamera = cameraWithTensors(Camera);
+  let requestAnimationFrameId = 0;
+  const textureDims = Platform.OS === "ios"? { width: 1080, height: 1920 } : { width: 1600, height: 1200 };
+  
 
   useEffect(() => {
     (async () => {

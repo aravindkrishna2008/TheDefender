@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, StyleSheet, Text, Image, Keyboard, TouchableWithoutFeedback} from 'react-native'
 import { TextInput, Title, Button } from 'react-native-paper';
 import {Ionicons} from '@expo/vector-icons'
+import { Context as AuthContext } from '../context/AuthContext'
+
 
 const SignInScreen = ({ navigation: { navigate } }) => {
     return(

@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+//@ts-ignore
 import React from "react";
 import {
   StyleSheet,

@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-//@ts-ignore
 import React from "react";
 import {
   StyleSheet,
@@ -13,8 +12,9 @@ import {
 import { Camera } from "expo-camera";
 let camera: Camera;
 import { Ionicons } from "@expo/vector-icons";
+var axios = require("axios");
 
-export default function App() {
+export default function App({ navigation: { navigate } }) {
   const [startCamera, setStartCamera] = React.useState(false);
   const [previewVisible, setPreviewVisible] = React.useState(false);
   const [capturedImage, setCapturedImage] = React.useState(null);
@@ -22,6 +22,7 @@ export default function App() {
     Camera.Constants.Type.back
   );
   const [flashMode, setFlashMode] = React.useState("off");
+  const [uri, setUri] = React.useState("");
 
   const __startCamera = async () => {
     const { status } = await Camera.requestPermissionsAsync();
@@ -35,11 +36,50 @@ export default function App() {
   const __takePicture = async () => {
     const photo: any = await camera.takePictureAsync();
     console.log(photo);
+    console.log(photo.uri);
+    uploadPhoto(photo);
     setPreviewVisible(true);
     //setStartCamera(false)
     setCapturedImage(photo);
   };
-  const __savePhoto = () => {};
+  const uploadPhoto = async (photo: any) => {
+    let formData = new FormData();
+    //@ts-ignore
+    let string = photo.uri;
+    //@ts-ignore
+    setUri(photo.uri);
+    //@ts-ignore
+    let file_name = " ";
+    //@ts-ignore
+    for (let i = 0; i < photo.uri.length; i++) {
+      //@ts-ignore
+      let substr = string.substring(i, photo.uri.length);
+      if (!substr.includes("/")) {
+        file_name = substr;
+        break;
+      }
+    }
+    console.log(file_name);
+    formData.append("image", {
+      //@ts-ignore
+      uri: photo.uri,
+      //@ts-ignore
+      name: file_name,
+      type: "image/jpeg",
+    });
+    const response = await axios.post(
+      `http://192.168.86.207:5002/upload-image`,
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+    // console.log(response.data);
+    __savePhoto();
+  };
+  const __savePhoto = () => {
+    navigate("Result");
+  };
   const __retakePicture = () => {
     setCapturedImage(null);
     setPreviewVisible(false);
@@ -73,7 +113,7 @@ export default function App() {
           {previewVisible && capturedImage ? (
             <CameraPreview
               photo={capturedImage}
-              savePhoto={__savePhoto}
+              savePhoto={uploadPhoto}
               retakePicture={__retakePicture}
             />
           ) : (
@@ -222,7 +262,6 @@ const styles = StyleSheet.create({
 });
 
 const CameraPreview = ({ photo, retakePicture, savePhoto }: any) => {
-  console.log("Image that we are Previewing", photo);
   return (
     <View
       style={{

@@ -6,6 +6,7 @@ import SignUpScreen from "./src/screens/SignUpscreen";
 import CameraScreen from "./src/ml_screen/LoadModel";
 import { Provider as AuthProvider } from "./src/context/AuthContext.jsx";
 import { navigationRef } from "./src/RootNavigation";
+import Result from "./src/ml_screen/Result";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,11 @@ function App() {
           <Stack.Screen
             name="Camera"
             component={CameraScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Result"
+            component={Result}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

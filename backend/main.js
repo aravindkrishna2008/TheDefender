@@ -1,12 +1,9 @@
-//models
-require('./models/User')
-
+require('./models/User.js')
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
-
-//routes
-const authRoute = require('./routes/authRoutes');
+const authRoutes = require('./routes/authRoutes')
+const requireAuth = require('./middlewares/requireAuth.js')
 
 const mongoUri = 'mongodb+srv://Aravind:testpassword@cluster0.ulq7g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(mongoUri, {
@@ -19,17 +16,14 @@ mongoose.connect(mongoUri, {
 const app = express()
 
 app.use(bodyParser.json());
-app.use(authRoute)
-
+app.use(authRoutes)
 
 mongoose.connection.on('connected', () => {
   console.log('Connected to mongo instance')
 })
-
 mongoose.connection.on('error', (err) => {
   console.error('error connecting to mongo', err)
 })
-
 
 const PORT = 5001
 

@@ -55,7 +55,7 @@ const signin = (dispatch) => async ({ email, password }) => {
     const response = await maskApi.post("/signin", { email, password });
     await AsyncStorage.setItem("token", response.data.token);
     dispatch({ type: "signin", payload: response.data.token });
-    navigate("HomeFlow");
+    navigate("Camera");
   } catch (err) {
     dispatch({
       type: "add_error",

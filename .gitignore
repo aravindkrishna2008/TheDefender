@@ -2,3 +2,4 @@ client/node_modules
 backend/node_modules
 models/ML_Models/mask_detector.h5
 client/assets/machine_learning/group1-shard1of1.bin
+.DS_Store

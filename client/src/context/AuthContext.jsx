@@ -33,10 +33,10 @@ const clearErrorMessage = (dispatch) => () => {
   dispatch({ type: "clear_error_message" });
 };
 
-const signup = (dispatch) => async ({ email, password, firstName, lastName }) => {
+const signup = (dispatch) => async ({ email, password }) => {
   clearErrorMessage()
   try {
-    const response = await maskApi.post('/signup', {email, password, firstName, lastName});
+    const response = await maskApi.post('/signup', { email, password });
     // console.log(response)
     await AsyncStorage.setItem("token", response.data.token);
     dispatch({ type: "signin", payload: response.data.token });

@@ -6,6 +6,15 @@ import { Context as AuthContext } from '../context/AuthContext'
 
 
 const SignInScreen = ({ navigation: { navigate } }) => {
+
+    const { state, signup, clearErrorMessage} = useContext(
+        AuthContext
+      );
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
@@ -13,8 +22,8 @@ const SignInScreen = ({ navigation: { navigate } }) => {
             <Image style={{height: 100, width: 100, alignSelf: 'center', marginTop: 20}}source={{ uri: "https://cdn-icons-png.flaticon.com/512/2950/2950157.png" }}/>
             <TextInput 
                 style={{ marginTop: 20, width: 300, alignSelf: 'center' }} 
-                // value={email} 
-                // onChangeText={setEmail}  
+                value={email} 
+                onChangeText={setEmail}  
                 keyboardType="email-address"
                 left={<TextInput.Icon name={() => <Ionicons name="mail-outline" size={25} />} />}
                 label={'Email'}
@@ -31,8 +40,8 @@ const SignInScreen = ({ navigation: { navigate } }) => {
           />
             <TextInput 
                 style={{ marginTop: 20, width: 300, alignSelf: 'center' }} 
-                // value={email} 
-                // onChangeText={setEmail}  
+                value={password} 
+                onChangeText={setPassword}  
                 secureTextEntry={true}
                 keyboardType="email-address"
                 left={<TextInput.Icon name={() => <Ionicons name="key-outline" size={25} />} />}

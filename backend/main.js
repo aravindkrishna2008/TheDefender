@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const authRoutes = require('./routes/authRoutes')
 const requireAuth = require('./middlewares/requireAuth.js')
 
-const mongoUri = 'mongodb+srv://Aravind:testpassword@cluster0.ulq7g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const mongoUri = 'Enter password'
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useCreateIndex: true,
